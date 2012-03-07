@@ -169,8 +169,7 @@ H
   });
   // ^^ DEBUG CONTROL STUFF!! ================================================^^
 
-
-  var dostop = true;
+  // ETHERNET ARDUINO READ LOOP!! ==============================================
   var fpscount = 0;
   $('button').click(function(){
     dostop = !dostop;
@@ -184,37 +183,49 @@ H
     fpscount = 0;
   }, 500);
 
-var last_val = 0;
+  var last_val = [0,0,0,0,0,0];
+  var intro_counter = 0;
   function grabdata(){
     $.ajax({
       url: "?proxy",
       success: function(data){
-        var avg = ((data.a[0] / 2) + last_val) / 2;
-        $('#a0').css('height', ((avg / 512) * 100) + "%" );
-
-        var change = parseInt(Math.abs(last_val-avg));
-
-        if (change > 20){
-          ships[0].thrust = 0;
-          //ships[0].trigger_boom(true);
-        }else{
-          if (!ships[0].exploding){
-            ships[0].thrust = change / 40
-          }else{
-            ships[0].thrust = 0;
+        if (intro_counter< 10) intro_counter++;
+        $.each(data.a, function(i, analog_val){
           // Debug value output bars
+          var avg = ((analog_val / 2) + last_val[i]) / 2;
           if (do_debug) $('#a' + i).css('height', ((avg / 512) * 100) + "%" );
-          }
-        }
-        last_val = avg;
-        $('.change span').html(change);
 
-        /*$.each(data.a, function(i, val){
-          $('#a'+i).css('height', ((val/2)+$('#a'+i).height())/2);
-        })*/
+          if (i <= 2){ // Conductive dough sensors
+            var change = parseInt(Math.abs(last_val[i]-avg));
+
+            // Mostly ignore the first few values
+            if (intro_counter > 8 && !winscreenrun) {
+              if (change > 30){
+                ships[i].thrust = 0;
+                ships[i].trigger_boom(true);
+              }else{
+                if (change > 5) change = 5;
+                if (!ships[i].exploding){
+                  ships[i].thrust = change / 20
+                }else{
+                  ships[i].thrust = 0;
+                }
+              }
+            }
+          }
+
+          if (i > 2 && !winscreenrun) { // Buttons!
+            // Analog inputs are pulled up to 5v with 1k ohm
+            // When analog drops down, the button was pressed!
+            if (analog_val < 800){
+              ships[i-3].fire();
+            }
+          }
+          last_val[i] = avg;
+        });
+
         fpscount++;
         if (!dostop){
-          //setTimeout(grabdata, 33);
           grabdata();
         }
       },
@@ -223,8 +234,8 @@ var last_val = 0;
         console.log(jqXHR, textStatus, errorThrown);
       }
     });
-
   }
+  // ETHERNET ARDUINO READ LOOP STUFF ^^^ !! =================================^^
 </script>
 
 </body>
