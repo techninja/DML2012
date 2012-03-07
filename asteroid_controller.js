@@ -46,13 +46,13 @@ var asteroid_start_offset_x = Math.round(ASPECT*200);
 var asteroids = [];
 
 var loader = new THREE.JSONLoader();
-loader.load( "asteroid_small.js", function(geometry) {
+loader.load( "models/asteroid_small.js", function(geometry) {
   add_asteroid(geometry, 20, .04, .02);
   add_asteroid(geometry, 40, -.04, .01);
   add_asteroid(geometry, 35, .05, -.03);
 });
 
-loader.load( "asteroid_model_big.js", function(geometry) {
+loader.load( "models/asteroid_model_big.js", function(geometry) {
   add_asteroid(geometry, 30, -.01, .02);
 });
 
