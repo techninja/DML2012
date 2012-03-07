@@ -41,6 +41,9 @@ H
     <div class="fps">FPS:<span>0</span></div>
     <div class="change">Change:<span>0</span></div>
   </div>
+
+  <a href="http://sylviashow.com"><img class="logo" src="logo.png"/></a>
+  <img class="logo" src="logo.png"/>
   <script src="asteroid_controller.js"></script>
 <script>
   // SHIP STUFF!! =============================================================

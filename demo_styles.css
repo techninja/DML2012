@@ -81,12 +81,17 @@ img.preload {
   display: block;
 }
 
-img#logo {
+img.logo {
   width: 70%;
   opacity: .7;
   position: absolute;
   bottom: 2px;
   margin-left: 10%;
+}
+
+a img.logo { /* Cheap hack to make logo clickable but same size and transparent */
+  opacity: 0;
+  z-index: 20;
 }
 
 /* DEBUG */
