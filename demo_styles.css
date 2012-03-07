@@ -55,7 +55,15 @@ body {
 #winscreen img {
   margin-left: 20%;
   width: 160px;
+  margin-top: 21px;
 }
+
+#winscreen h2 {
+  margin-top: 8px;
+  margin-bottom: -5px;
+  line-height: 20px;
+}
+
 #backcanvas {
   position: absolute;
   z-index: 9; /* Below the finish line  */
