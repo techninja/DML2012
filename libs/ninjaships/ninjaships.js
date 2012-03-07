@@ -33,7 +33,16 @@ window.requestAnimFrame = (function(){
 var stopanim = false;
 var oneshotperscreen = false; // Just like it says!
 var shipscreenwrap = true; // Wrap the ships on the screen
-var explosion_sound_path = "explosion.wav"; // TODO: This method sucks, fix it
+
+// TODO: This method sucks, fix it
+var explosion_sound_path = "explosion.wav";
+var thrust_sound_path = "thrust.wav";
+var fire1_sound_path = "fire1.wav";
+var fire2_sound_path = "fire2.wav";
+var fire3_sound_path = "fire3.wav";
+var hit1_sound_path = "hit2.wav";
+var hit2_sound_path = "hit1.wav";
+
 
 // TODO: Preload explosion sprite in code
 
@@ -61,6 +70,7 @@ function shipObject(name, elementid, style, pos){
   this.element_id = '.ship_id_' + elementid;
 
   this.explosion_sound = new Audio(explosion_sound_path);
+  this.thust_sound = new Audio(thrust_sound_path);
 
   if (style != undefined){
     this.style = style;
@@ -69,14 +79,19 @@ function shipObject(name, elementid, style, pos){
   }
 
   // Set Projectile defaults per ship style
+  if (this.style == 'a'){
+    this.fire_sound = new Audio(fire1_sound_path);
+  }
   if (this.style == 'b'){
     this.projectile_defaults.type = 'energy';
     this.projectile_defaults.style = 'blue';
     this.projectile_defaults.yoffset = 20;
+    this.fire_sound = new Audio(fire2_sound_path);
   }
   if (this.style == 'c'){
     this.projectile_defaults.type = 'laser';
     this.projectile_defaults.style = 'green';
+    this.fire_sound = new Audio(fire3_sound_path);
   }
 
   if (pos != undefined){
@@ -108,6 +123,8 @@ function shipObject(name, elementid, style, pos){
         if (this.projectiles[this.projectiles.length-1].active) return;
       }
     }
+
+    this.fire_sound.play();
 
     // Add to the projectile array for the ship object
     this.projectiles.push(

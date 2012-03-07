@@ -7,6 +7,7 @@
 // set the scene size
 var canvas_width = 640,
   canvas_height = 360;
+var asteroid_hit_sound = new Audio(hit1_sound_path);
 
 // set some camera attributes
 var VIEW_ANGLE = 45,
@@ -227,6 +228,7 @@ function run_collision_check(){
                 }
               });
             }
+                asteroid_hit_sound.play();
           }
         });
 
