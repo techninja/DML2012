@@ -5,8 +5,9 @@
 */
 
 // set the scene size
-var canvas_width = 640,
-  canvas_height = 360;
+var canvas_width = $(window).width(),
+  canvas_height = $(window).height();
+
 var asteroid_hit_sound = new Audio(hit1_sound_path);
 
 // set some camera attributes
