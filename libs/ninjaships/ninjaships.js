@@ -35,13 +35,13 @@ var oneshotperscreen = false; // Just like it says!
 var shipscreenwrap = true; // Wrap the ships on the screen
 
 // TODO: This method sucks, fix it
-var explosion_sound_path = "explosion.wav";
-var thrust_sound_path = "thrust.wav";
-var fire1_sound_path = "fire1.wav";
-var fire2_sound_path = "fire2.wav";
-var fire3_sound_path = "fire3.wav";
-var hit1_sound_path = "hit2.wav";
-var hit2_sound_path = "hit1.wav";
+var explosion_sound_path = "audio/explosion.wav";
+var thrust_sound_path = "audio/thrust.wav";
+var fire1_sound_path = "audio/fire1.wav";
+var fire2_sound_path = "audio/fire2.wav";
+var fire3_sound_path = "audio/fire3.wav";
+var hit1_sound_path = "audio/hit1.wav";
+var hit2_sound_path = "audio/hit2.wav";
 
 
 // TODO: Preload explosion sprite in code
