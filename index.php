@@ -139,7 +139,8 @@ H
   // DEBUG CONTROL STUFF!! ====================================================
   var keyCodes = {
     16: 'shift', 32: 'space', 37: 'left', 38: 'up', 39: 'right', 40: 'down', 9: 'tab',
-    87: 'w', 83: 's', 65: 'a', 68: 'd', 81: 'q', 69: 'e', 88: 'x'
+    87: 'w', 83: 's', 65: 'a', 68: 'd', 81: 'q', 69: 'e', 88: 'x', 76: 'l', 79: 'o',
+    66: 'b'
   };
 
   $(document).keydown(function(e){ // KEYDOWN INIT ----------------
@@ -147,26 +148,27 @@ H
     if (winscreenrun) return; // TODO: Be sure and apply this to any input!
     switch (keyCodes[e.keyCode]){
       case 'a':
-        ships[0].thrust = 0.25; break;
-      case 's':
-        ships[1].thrust = 0.25; break;
-      case 'd':
-        ships[2].thrust = 0.25; break;
+        ships[0].thrust = 0.15; break;
+      case 's': case 'b':
+        ships[1].thrust = 0.15; break;
+      case 'd': case 'l':
+        ships[2].thrust = 0.15; break;
       case 'q':
         ships[0].fire(); break;
-      case 'w':
+      case 'w': case 'space':
         ships[1].fire(); break;
-      case 'e':
+      case 'e':  case 'o':
         ships[2].fire(); break;
     }
 
   }).keyup(function(e){ // KEYUP CANCEL ----------------
     switch (keyCodes[e.keyCode]){
-      case 'a': case 's': case 'd':
-        ships[0].thrust = 0;
-        ships[1].thrust = 0;
-        ships[2].thrust = 0;
-        break;
+      case 'a':
+        ships[0].thrust = 0; break;
+      case 's': case 'b':
+        ships[1].thrust = 0; break;
+      case 'l': case 'd':
+        ships[2].thrust = 0; break;
     }
   });
   // ^^ DEBUG CONTROL STUFF!! ================================================^^
