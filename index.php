@@ -16,7 +16,7 @@ if (isset($_GET['proxy'])){
   <script src="libs/Three.js"></script>
   <link rel="stylesheet" href="demo_styles.css">
   <link rel="stylesheet" href="libs/ninjaships/resources/styles.css">
-  <title>SSA DML DEMO 2012</title>
+  <title>Sylvia's Super-Awesome DML Demo, 2012</title>
 </head>
 <body>
   <div id="asteroid"></div>
