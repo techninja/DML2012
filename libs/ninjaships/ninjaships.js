@@ -117,6 +117,9 @@ function shipObject(name, elementid, style, pos){
 
   // FUNCTION Send out a projectile
   this.fire = function(){
+    // A dead ship can't shoot!
+    if (this.exploding) return;
+
     // One shot on screen only!
     if (oneshotperscreen){
       if (this.projectiles[this.projectiles.length-1]){
