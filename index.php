@@ -3,7 +3,7 @@
 if (isset($_GET['proxy'])){
   header('Content-type: application/json');
   header('Pragma: no-cache');
-  echo file_get_contents('http://192.168.0.242');
+  echo file_get_contents('http://arduino.local');
   exit;
 }
 ?>
