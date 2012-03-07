@@ -2,19 +2,19 @@
 
 _Super-Awesome Sylvia came up with the idea and TechNinja coded it: It's our crazy [Digital Media & Learning][1] conference Science Fair demo, **Squishy Space Race 2042!** A game for three competitive players written in CSS3 and HTML5, and controlled by squishing conductive dough._
 
-#### **The Setup:**
+#### The Setup:
 
 Up to three participants line up in front of the booth table and watch the TV in front of them. Each has their own "control panel" with a button and a lump of home-made conductive salt dough on two copper pads connected to an Ethernet enabled Arduino.
 
-#### **The Gimmick:**
+#### The Gimmick:
 
 Each player controls a spaceship on screen by squishing the dough in _just the right way_, and the first player across the finish line on the right side of the screen, wins! Exactly how to squish the dough isn't given, and you can't simply squish it flat; the ships only move if there's enough change in the dough's resistance over time. Also the space field players must cross is randomly strewn with hurtling 3D asteroids that they can deflect with their laser, if they can react in time!
 
 ### Software Requirements:
 
-**Server: **The index file was meant to run on a standard stack for PHP, but it's not required. The only PHP code used is at the top to create a server side proxy to wherever the Arduino happens to live, because the browser cannot request the JSON string cross domain without JSONP (which I hadn't implemented in my Arduino firmware).
+**Server:** The index file was meant to run on a standard stack for PHP, but it's not required. The only PHP code used is at the top to create a server side proxy to wherever the Arduino happens to live, because the browser cannot request the JSON string cross domain without JSONP (which I hadn't implemented in my Arduino firmware).
 
-**Client: **This was written for and in the latest version of Mozilla Firefox, but happens to also work great in Google Chrome. Also somewhat software though also hardware related, WebGL is required to realtime render the asteroids. This is a silly requirement considering the rest of the game is regular old CSS3 and HTML5 object markup, but hey, it's a demo. It's all about the fun. Also, it's recommended you use full browser zooming/scaling (CTRL+ 'Plus') to adjust the exact size you want the ships, then refresh the page. Although this makes everything blurrier, this cuts down on the number of operations required per frame during collision detection adn rendering, not to mention helps the game "fit" a given screen better. At 6 feet away on a 42 inch screen, no one said _**a thing**_ about the pixels ;)
+**Client:** This was written for and in the latest version of Mozilla Firefox, but happens to also work great in Google Chrome. Also somewhat software though also hardware related, WebGL is required to realtime render the asteroids. This is a silly requirement considering the rest of the game is regular old CSS3 and HTML5 object markup, but hey, it's a demo. It's all about the fun. Also, it's recommended you use full browser zooming/scaling (CTRL+ 'Plus') to adjust the exact size you want the ships, then refresh the page. Although this makes everything blurrier, this cuts down on the number of operations required per frame during collision detection adn rendering, not to mention helps the game "fit" a given screen better. At 6 feet away on a 42 inch screen, no one said _**a thing**_ about the pixels ;)
 
 ### Assembly:
 
