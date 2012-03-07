@@ -1,6 +1,6 @@
 ## Sylvia's Super-Awesome DML Demo 2012!
 
-_Super-Awesome Sylvia came up with the idea and TechNinja coded it: It's our crazy [Digital Media & Learning][1] conference Science Fair demo, **Squishy Space Race 2042!** A game for three competitive players written in CSS3 and HTML5, and controlled by squishing conductive dough._
+_Super-Awesome Sylvia came up with the idea and TechNinja coded it: It's our crazy [Digital Media & Learning][1] conference Science Fair demo, **Squishy Space Race 2042!** A game for three competitive players written in CSS3 and HTML5, and controlled by squishing conductive dough. **[Original Google+ Post Here][5]**_
 
 #### The Setup:
 
@@ -37,4 +37,5 @@ The Arduino and [squishy circuits][4] we used for the demo aren't actually requi
    [2]: http://jeelabs.net/projects/9/wiki/Ether_Card
    [3]: https://www.adafruit.com/products/51
    [4]: http://sylviashow.com/squishy
+   [5]: https://plus.google.com/102649665767942479588/posts/ctMQKYZyPi2
 
