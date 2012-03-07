@@ -18,7 +18,7 @@ if (isset($_GET['proxy'])){
   <link rel="stylesheet" href="libs/ninjaships/resources/styles.css">
   <title>Sylvia's Super-Awesome DML Demo, 2012</title>
 </head>
-<body>
+<body class="space">
   <h2 id="finishline"><span>F
 I
 N
@@ -40,7 +40,6 @@ H
     <button>Stop/Start</button>
     <div class="fps">FPS:<span>0</span></div>
     <div id="preload_boom"> </div>
-    <div class="change">Change:<span>0</span></div>
   </div>
 
   <a href="http://sylviashow.com"><img class="logo" src="logo.png"/></a>
@@ -48,11 +47,19 @@ H
   <script src="asteroid_controller.js"></script>
 <script>
   // SHIP STUFF!! =============================================================
+  var do_debug = location.hash == "#debug";
   var animdelay = 25;
   var ships = [];
+  var dostop = true;
   var winscreenrun = false;
   shipscreenwrap = false;
   oneshotperscreen = true;
+  if (!do_debug){
+    $('#controls, .wrapper').hide();
+    var dostop = false;
+    grabdata();
+    $('body').pan({fps: 20, speed: 1, dir: 'left'})
+  }
 
   ships[0] = new shipObject("Player 1", 'ship1', 'a', {x:0, y:50, d:90});
   ships[1] = new shipObject("Player 2", 'ship2', 'b', {x:0, y:150, d:90});
@@ -173,6 +180,8 @@ var last_val = 0;
             ships[0].thrust = change / 40
           }else{
             ships[0].thrust = 0;
+          // Debug value output bars
+          if (do_debug) $('#a' + i).css('height', ((avg / 512) * 100) + "%" );
           }
         }
         last_val = avg;
