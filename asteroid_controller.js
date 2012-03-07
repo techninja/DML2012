@@ -39,7 +39,10 @@ renderer.setSize(canvas_width, canvas_height);
 $(renderer.domElement).attr('id', 'backcanvas').appendTo('body');
 
 //=====================================================================
-var asteroid_start_offset_x = 350;
+// TODO: As much as this offset is correct depending on aspect ratio
+// It does nothing to vary the incoming angles of asteroids, destroying resting
+// ships when too skinny, and barely showing up for wide screens
+var asteroid_start_offset_x = Math.round(ASPECT*200);
 var asteroids = [];
 
 var loader = new THREE.JSONLoader();
