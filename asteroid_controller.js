@@ -37,7 +37,6 @@ renderer.setSize(canvas_width, canvas_height);
 
 // attach the render-supplied DOM element
 $(renderer.domElement).attr('id', 'backcanvas').appendTo('body');
-//$('body').append(renderer.domElement);
 
 //=====================================================================
 var asteroid_start_offset_x = 350;
@@ -168,14 +167,6 @@ function run_asteroid_render(){
       }
 
       asteroid.position.set(xpos, ypos, 0);
-
-      // Bounding Box experiment (suffers bad parallax because of Z distance)
-      /*
-      var mass = asteroid.boundRadius * asteroid.boundRadiusScale * 1.6;
-      xpos = xpos+280;
-      ypos = -(ypos-110);
-      $('#asteroid').css({width: mass, height: mass, left:xpos, top: ypos});
-      //*/
 
     }
   });
