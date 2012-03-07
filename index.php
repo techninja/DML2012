@@ -28,6 +28,7 @@ H
 !</span>
   </h2>
   <div id="winscreen"><img src="trophy.png"/><h2><span>PLAYER</span> Wins!!</h2></div>
+
   <div class="wrapper">
     <div id="a0" class="bar"></div>
     <div id="a1" class="bar"></div>
@@ -54,6 +55,8 @@ H
   var winscreenrun = false;
   shipscreenwrap = false;
   oneshotperscreen = true;
+  var win_sound = new Audio("fanfare.wav");
+
   if (!do_debug){
     $('#controls, .wrapper').hide();
     var dostop = false;
@@ -70,17 +73,18 @@ H
       requestAnimFrame(animloop);
     }
     run_asteroid_render();
-    run_collision_check();
+    if (!winscreenrun) run_collision_check();
     run_ship_anim_frame();
     run_win_check();
   })();
 
-
+  /**
+   * Check if a ship has crossed the finish line, if so, execute the win scenario
+   */
   function run_win_check(){
     var winner = false;
     if (!winscreenrun){
       $.each(ships, function(i, ship){
-        //console.log(i, ship);
         if (!ship.exploding && ship.pos.x + 64 >= $(window).width() - 30){
           winscreenrun = true;
           winner = i;
@@ -89,16 +93,34 @@ H
 
       // Run once per win scenario
       if (winscreenrun){
-        $('#winscreen').fadeIn('slow');
+        ships[winner].element.fadeOut(function(){
+          // Set position to appear inside cup
+          ships[winner].pos.d = 0;
+          ships[winner].pos.x = $('#winscreen img').offset().left+20;
+          ships[winner].pos.y = 70;
+          ships[winner].kill_velocity();
+          // Cheap hack to keep ship from exploding while in trophy cup
+          ships[winner].exploding = true;
+          ships[winner].element.css('z-index', '11');
+          ships[winner].element.fadeIn();
+        });
+        $('#winscreen').fadeIn('slow', function(){win_sound.play();});
         $('#winscreen span').html(ships[winner].name);
+
         setTimeout(function(){
           $('#winscreen').fadeOut('slow');
-          ships[winner].element.hide();
-          ships[winner].pos.x = ships[winner].home.x;
-          ships[winner].kill_velocity();
-          ships[winner].element.fadeIn('slow');
-          winscreenrun = false; winner = false;
-        }, 5000);
+          ships[winner].element.fadeOut('slow', function(){
+            // Bring winner ship back (and undo the weird stuff)
+            ships[winner].pos.x = ships[winner].home.x;
+            ships[winner].pos.y = ships[winner].home.y;
+            ships[winner].exploding = false;
+            ships[winner].pos.d = 90;
+            ships[winner].element.css('z-index', '');
+            ships[winner].kill_velocity();
+            ships[winner].element.fadeIn('slow');
+            winscreenrun = false; winner = false;
+          });
+        }, 4000);
         // Blow up the loser ships!
         $.each(ships, function(i, ship){
           if (ship.pos.x + 64 < $(window).width() - 30){
