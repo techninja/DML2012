@@ -131,19 +131,9 @@ projectile_context.fillStyle = "#8ED6FF";
 projectile_context.fill();
 var projectile_imagedata = ship_context.getImageData(0, 0, 20, 20);
 
-var asteroid_canvas = $('<canvas>')[0];
-asteroid_canvas.width = canvas_width;
-asteroid_canvas.height = canvas_height;
-var asteroid_context = asteroid_canvas.getContext('2d');
-var asteroid_imagedata;
-
-var waiting_for_renderframe_load = false;
-
 var xrot = 0, yrot = 0, xpos = 0, ypos = 0;
 
 function run_asteroid_render(){
-  if (waiting_for_renderframe_load) return;
-
   $.each(asteroids, function(i, asteroid){
     if (asteroid.active){
       // Asteroid rotation
@@ -178,57 +168,52 @@ function run_asteroid_render(){
 
 function run_collision_check(){
   if (ship_imagedata){
-    waiting_for_renderframe_load = true;
-    var renderframe = new Image();
-    renderframe.src = renderer.domElement.toDataURL();
-    renderframe.onload = function(){
-      waiting_for_renderframe_load = false;
-      asteroid_canvas.width = asteroid_canvas.width;
-      asteroid_context.drawImage(renderframe, 0, 0);
-      asteroid_imagedata = asteroid_context.getImageData(0, 0, canvas_width, canvas_height);
 
-      // Check collision for every ship
-      $.each(ships, function(i, ship){
-        if (!ship.exploding){
-          if (isPixelCollision(ship_imagedata, ship.pos.x, ship.pos.y, asteroid_imagedata, 0, 0, false)){
-            ship.trigger_boom(true);
+    var asteroid_imagedata_array = new Uint8Array(canvas_width * canvas_height * 4);
+    renderer.context.readPixels(0, 0, canvas_width, canvas_height, renderer.context.RGBA, renderer.context.UNSIGNED_BYTE, asteroid_imagedata_array);
+
+    var asteroid_imagedata = {width:canvas_width, height: canvas_height, data: asteroid_imagedata_array};
+
+    // Check collision for every ship
+    $.each(ships, function(i, ship){
+      if (!ship.exploding){
+        if (isPixelCollision(ship_imagedata, ship.pos.x, ship.pos.y, asteroid_imagedata, 0, 0, false)){
+          ship.trigger_boom(true);
+        }
+      }
+      // Check collision for projectile
+      $.each(ship.projectiles, function(i, projectile){
+        if (projectile.active){
+          // TODO: Adjust position for correct width
+          var xpos = projectile.pos.x-20;
+          if (isPixelCollision(projectile_imagedata, xpos, projectile.pos.y, asteroid_imagedata, 0, 0, false)){
+            projectile.active = false;
+            // TODO: Add some kind of support for more than one asteroid
+            $.each(asteroids, function(i, asteroid){
+              if (asteroid.active){ // Will send away all active asteroids
+                // Calculate moveback based on asteroid size
+                var mass = asteroid.boundRadius * asteroid.boundRadiusScale;
+
+                // Apparently the math is too hard for my brain at 3 in the AM
+                // So here's a nasty hack to allow for the simulation of this :P
+                var cheat = [2.5, 1.2, 0.4];
+                var idx = 0;
+
+                if (mass < 35) idx = 0;
+                if (mass > 35) idx = 1;
+                if (mass > 100) idx = 2;
+
+                xspd = asteroid.movespeed.x + cheat[idx];
+
+                asteroid_hit_sound.play();
+                asteroid.movespeed.x = xspd;
+              }
+            });
           }
         }
-        // Check collision for projectile
-        $.each(ship.projectiles, function(i, projectile){
-          if (projectile.active){
-            // TODO: Adjust position for correct width
-            var xpos = projectile.pos.x-20;
-            if (isPixelCollision(projectile_imagedata, xpos, projectile.pos.y, asteroid_imagedata, 0, 0, false)){
-              projectile.active = false;
-              // TODO: Add some kind of support for more than one asteroid
-              $.each(asteroids, function(i, asteroid){
-                if (asteroid.active){ // Will send away all active asteroids
-                  // Calculate moveback based on asteroid size
-                  var mass = asteroid.boundRadius * asteroid.boundRadiusScale;
-
-                  // Apparently the math is too hard for my brain at 3 in the AM
-                  // So here's a nasty hack to allow for the simulation of this :P
-                  var cheat = [2.5, 1.2, 0.4];
-                  var idx = 0;
-
-                  if (mass < 35) idx = 0;
-                  if (mass > 35) idx = 1;
-                  if (mass > 100) idx = 2;
-
-                  xspd = asteroid.movespeed.x + cheat[idx];
-
-                  //console.log("mass:", mass, 'move:', asteroid.movespeed.x, "xspd:", xspd);
-                  asteroid.movespeed.x = xspd;
-                }
-              });
-            }
-                asteroid_hit_sound.play();
-          }
-        });
-
       });
-    };
+
+    });
   }
 }
 
