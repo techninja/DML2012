@@ -1,7 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+* @file asteroid_controller.js
+* Asteroid related routines for rendering and controlling anything to do
+* with the asteroids for the DML demo game
+*/
 
 // set the scene size
 var canvas_width = 640,
