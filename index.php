@@ -19,8 +19,6 @@ if (isset($_GET['proxy'])){
   <title>Sylvia's Super-Awesome DML Demo, 2012</title>
 </head>
 <body>
-  <div id="asteroid"></div>
-  <img class="preload" src="../spacetest/explosion_wide.png"/>
   <h2 id="finishline"><span>F
 I
 N
