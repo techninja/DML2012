@@ -272,12 +272,12 @@ function isPixelCollision( first, x, y, other, x2, y2, isCentred )
 
     // if the area is really small,
     // then just perform a normal image collision check
-    if ( xDiff < 4 && yDiff < 4 ) {
+    if ( xDiff < 65 && yDiff < 65 ) {
         for ( var pixelX = xMin; pixelX < xMax; pixelX++ ) {
             for ( var pixelY = yMin; pixelY < yMax; pixelY++ ) {
                 if (
                         ( pixels [ ((pixelX-x ) + (pixelY-y )*w )*4 + 3 ] !== 0 ) &&
-                        ( pixels2[ ((pixelX-x2) + (pixelY-y2)*w2)*4 + 3 ] !== 0 )
+                        ( pixels2[ ((pixelX-x2) + (h2-(pixelY-y2))*w2)*4 + 3 ] !== 0 )
                 ) {
                     return true;
                 }
