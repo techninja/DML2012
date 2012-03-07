@@ -64,10 +64,12 @@ H
     $('body').pan({fps: 20, speed: 1, dir: 'left'})
   }
 
+  // Initialize ship objects! (in a handy global array for usage everywhere)
   ships[0] = new shipObject("Player 1", 'ship1', 'a', {x:0, y:50, d:90});
   ships[1] = new shipObject("Player 2", 'ship2', 'b', {x:0, y:150, d:90});
   ships[2] = new shipObject("Player 3", 'ship3', 'c', {x:0, y:250, d:90});
 
+  // Main animation loop, using browser frame requests (doesn't run if tab isn't visible)
   (function animloop(){
     if (!stopanim){
       requestAnimFrame(animloop);
