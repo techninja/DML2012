@@ -2,6 +2,8 @@
 
 _Super-Awesome Sylvia came up with the idea and TechNinja coded it: It's our crazy [Digital Media & Learning][1] conference Science Fair demo, **Squishy Space Race 2042!** A game for three competitive players written in CSS3 and HTML5, and controlled by squishing conductive dough. **[Original Google+ Post Here][5]**_
 
+### [Check out a live demo _(sans Arduino and squishy circuits)_ here!][6]
+
 #### The Setup:
 
 Up to three participants line up in front of the booth table and watch the TV in front of them. Each has their own "control panel" with a button and a lump of home-made conductive salt dough on two copper pads connected to an Ethernet enabled Arduino.
@@ -31,11 +33,19 @@ Your mileage may vary, but here's our physical setup from Demo night:
 
 ### Squishless testing:
 
-The Arduino and [squishy circuits][4] we used for the demo aren't actually required to test the game out! Currently "A, S, D" add thrust to the ships, and "Q, W, E" fire lasers for #1, #2 & #3 respectively
+The Arduino and [squishy circuits][4] we used for the demo aren't actually required to test the game out! Currently "A, S, D" add thrust to the ships, and "Q, W, E" fire lasers for #1, #2 & #3 respectively.
+
+Also added for the benefit of those without Arduino that still want a taste of the action, these key combos are also available: (Though it will be a _very_ short game)
+
+  * _Player_: **Thrust** / **Fire**
+  * 1: A / Q
+  * 2: B / Space Bar
+  * 3: L / O
 
    [1]: http://dml2012.dmlcentral.net/
    [2]: http://jeelabs.net/projects/9/wiki/Ether_Card
    [3]: https://www.adafruit.com/products/51
    [4]: http://sylviashow.com/squishy
    [5]: https://plus.google.com/102649665767942479588/posts/ctMQKYZyPi2
+   [6]: http://sylviashow.com/dml2012
 
