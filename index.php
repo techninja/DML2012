@@ -55,7 +55,14 @@ H
   var winscreenrun = false;
   shipscreenwrap = false;
   oneshotperscreen = true;
-  var win_sound = new Audio("fanfare.wav");
+  var win_sound = new Audio("audio/fanfare.wav");
+  explosion_sound_path = "audio/explosion.wav";
+  thrust_sound_path = "audio/thrust.wav";
+  fire1_sound_path = "audio/fire1.wav";
+  fire2_sound_path = "audio/fire2.wav";
+  fire3_sound_path = "audio/fire3.wav";
+  hit1_sound_path = "audio/hit2.wav";
+  hit2_sound_path = "audio/hit1.wav";
 
   if (!do_debug){
     $('#controls, .wrapper').hide();
