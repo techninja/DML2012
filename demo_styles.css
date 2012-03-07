@@ -2,37 +2,7 @@ body {
   padding: 0;
   background-color: #000;
   overflow: hidden;
-}
-.bar {
-  width: 16%;
-  position: absolute;
-  background-color: red;
-  bottom: 0;
-}
-#a1 {left: 16%}
-#a2 {left: 33%}
-#a3 {left: 49%}
-#a4 {left: 66%}
-#a5 {left: 82%}
-
-.wrapper {
-  background-color: gainsboro;
-  bottom: 10px;
-  height: 64px;
-  position: absolute;
-  right: 10px;
-  width: 138px;
-  z-index: 20;
-}
-
-#controls {
-  background-color: royalblue;
-  position: absolute;
-  right: 148px;
-  bottom: 10px;
-  height: 64px;
-  width: 128px;
-  z-index: 20;
+  font-family: sans-serif;
 }
 
 #finishline {
@@ -92,12 +62,44 @@ img.preload {
   display: block;
 }
 
-/* DEBUG */
-#asteroid {
-  display: none;
-
-  border: 2px solid red;
+img#logo {
+  width: 70%;
+  opacity: .7;
   position: absolute;
+  bottom: 2px;
+  margin-left: 10%;
+}
 
+/* DEBUG */
+
+.bar {
+  width: 22px;
+  position: absolute;
+  background-color: red;
+  bottom: 0;
+}
+#a1 {left: 22px; background-color: blue;}
+#a2 {left: 44px; background-color: green;}
+#a3 {left: 66px; background-color: red;}
+#a4 {left: 88px; background-color: blue;}
+#a5 {left: 110px; width: 28px; background-color: green;}
+
+.wrapper {
+  background-color: gainsboro;
+  bottom: 10px;
+  height: 64px;
+  position: absolute;
+  right: 10px;
+  width: 138px;
+  z-index: 20;
+}
+
+#controls {
+  background-color: royalblue;
+  position: absolute;
+  right: 148px;
+  bottom: 10px;
+  height: 64px;
+  width: 128px;
   z-index: 20;
 }
