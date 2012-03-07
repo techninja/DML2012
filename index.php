@@ -39,6 +39,7 @@ H
   <div id="controls">
     <button>Stop/Start</button>
     <div class="fps">FPS:<span>0</span></div>
+    <div id="preload_boom"> </div>
     <div class="change">Change:<span>0</span></div>
   </div>
 

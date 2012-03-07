@@ -39,7 +39,7 @@ ship {
   height: 64px;
 }
 
-boom {
+boom, #preload_boom {
   display: block;
   width: 256px;
   height: 256px;
