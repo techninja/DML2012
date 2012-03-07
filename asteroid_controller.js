@@ -113,7 +113,7 @@ scene.add(pointLight);
 // 2D Canvas and contexts for collision detection===============================
 
 var ship_image = new Image();
-ship_image.src='../spacetest/ship_a.png';
+ship_image.src='libs/ninjaships/resources/ship_a.png';
 var ship_canvas = $('<canvas>')[0];
 var ship_context = ship_canvas.getContext('2d');
 var ship_imagedata;
