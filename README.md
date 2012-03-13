@@ -4,6 +4,8 @@ _Super-Awesome Sylvia came up with the idea and TechNinja coded it: It's our cra
 
 ### [Check out a live demo _(sans Arduino and squishy circuits)_ here!][6]
 
+### [Check out a video of the game and hardware in action at the DML 2012 Science Fair here!][7]
+
 #### The Setup:
 
 Up to three participants line up in front of the booth table and watch the TV in front of them. Each has their own "control panel" with a button and a lump of home-made conductive salt dough on two copper pads connected to an Ethernet enabled Arduino.
@@ -48,4 +50,5 @@ Also added for the benefit of those without Arduino that still want a taste of t
    [4]: http://sylviashow.com/squishy
    [5]: https://plus.google.com/102649665767942479588/posts/ctMQKYZyPi2
    [6]: http://sylviashow.com/dml2012
+   [7]: http://youtu.be/brPJJ5upgfA
 
