@@ -4,7 +4,9 @@ _Super-Awesome Sylvia came up with the idea and TechNinja coded it: It's our cra
 
 ### [Check out a live demo _(sans Arduino and squishy circuits)_ here!][6]
 
-### [Check out a video of the game and hardware in action at the DML 2012 Science Fair here!][7]
+### [Check out the official blog post with pictures, video and more about the event here!][8]
+
+### [OR skip straight to the video of the game and hardware in action at the DML 2012 Science Fair here!][7]
 
 #### The Setup:
 
@@ -51,4 +53,5 @@ Also added for the benefit of those without Arduino that still want a taste of t
    [5]: https://plus.google.com/102649665767942479588/posts/ctMQKYZyPi2
    [6]: http://sylviashow.com/dml2012
    [7]: http://youtu.be/brPJJ5upgfA
+   [8]: http://sylviashow.com/blog/techninja/2012/03/15/dml-wrap-make-photoshoot-and-plans-2012
 
