@@ -82,13 +82,13 @@ function shipObject(name, elementid, style, pos){
   if (this.style == 'a'){
     this.fire_sound = new Audio(fire1_sound_path);
   }
-  if (this.style == 'b'){
+  if (this.style == 'c'){
     this.projectile_defaults.type = 'energy';
     this.projectile_defaults.style = 'blue';
     this.projectile_defaults.yoffset = 20;
     this.fire_sound = new Audio(fire2_sound_path);
   }
-  if (this.style == 'c'){
+  if (this.style == 'b'){
     this.projectile_defaults.type = 'laser';
     this.projectile_defaults.style = 'green';
     this.fire_sound = new Audio(fire3_sound_path);
