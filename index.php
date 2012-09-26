@@ -87,7 +87,7 @@ H
     var winner = false;
     if (!winscreenrun){
       $.each(ships, function(i, ship){
-        if (!ship.exploding && ship.pos.x + 64 >= $(window).width() - 30){
+        if (!ship.exploding && ship.pos.x + 20 >= $(window).width()){
           winscreenrun = true;
           winner = i;
         }
@@ -125,7 +125,7 @@ H
         }, 4000);
         // Blow up the loser ships!
         $.each(ships, function(i, ship){
-          if (ship.pos.x + 64 < $(window).width() - 30){
+          if (i != winner){
             ship.trigger_boom(true);
           }
         });
