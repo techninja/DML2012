@@ -37,6 +37,7 @@ ship {
   display: block;
   width: 64px;
   height: 64px;
+  background-size: 64px 64px;
 }
 
 boom, #preload_boom {
@@ -57,14 +58,14 @@ ship.thrusting:before, ship.thrusting:after {
   top: 60px;
 }
 
-ship.ship_a.thrusting:before { left: 12px; }
-ship.ship_a.thrusting:after { left: 2px; }
+ship.ship_a.thrusting:before { left: 4px; top: 62px; }
+ship.ship_a.thrusting:after { left: 8px; top: 62px; }
 
-ship.ship_b.thrusting:before { left: 3px; }
-ship.ship_b.thrusting:after { left: 9px; }
+ship.ship_b.thrusting:before { left: 9px; }
+ship.ship_b.thrusting:after { left: 4px; }
 
-ship.ship_c.thrusting:before { left: 9px; top: 59px; }
-ship.ship_c.thrusting:after { left: 4px; top: 59px; }
+ship.ship_c.thrusting:before { left: 8px; top: 62px; }
+ship.ship_c.thrusting:after { left: 3px; top: 62px; }
 
 /* Backward thrust */
 ship.thrusting_back:before, ship.thrusting_back:after {
@@ -89,11 +90,21 @@ projectile.init {
   top: 50px;
 }
 
-projectile.laser {
+projectile.laser, projectile.laser:before {
   height: 70px;
   width: 5px;
   border-radius: 5px;
   background-color:#FFF;
+}
+
+projectile.laser {
+  margin-top: -6px; /* y offset for top double laser */
+}
+
+projectile.laser:before {
+  content: "";
+  margin-left: 10px; /* Distance for bottom double laser */
+  display: block;
 }
 
 projectile.energy {
@@ -107,11 +118,21 @@ projectile.blue {
   background-color: blue;
 }
 
+/* TODO: Include these offsets as part of ship setup */
+
 projectile.green {
+  margin-top: -16px; /* y offset for top double laser */
+}
+
+projectile.green:before {
+  margin-left: 26px; /* Distance for bottom double laser */
+}
+
+projectile.green, projectile.green:before {
   background-color: green;
   width: 2px;
 }
 
-projectile.red {
+projectile.red, projectile.red:before {
   background-color: red;
 }
