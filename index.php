@@ -40,11 +40,11 @@ H
   <div id="controls">
     <button>Stop/Start</button>
     <div class="fps">FPS:<span>0</span></div>
-    <div id="preload_boom"> </div>
   </div>
 
   <a href="http://sylviashow.com"><img class="logo" src="logo.png"/></a>
   <img class="logo" src="logo.png"/>
+  <div id="preload_boom" class="preload"> </div>
   <script src="asteroid_controller.js"></script>
 <script>
   // SHIP STUFF!! =============================================================
@@ -59,7 +59,7 @@ H
 
   if (!do_debug){
     $('#controls, .wrapper').hide();
-    var dostop = false;
+    dostop = false;
     grabdata();
     $('body').pan({fps: 20, speed: 1, dir: 'left'})
   }
